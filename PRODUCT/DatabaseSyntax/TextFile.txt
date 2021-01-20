@@ -1,0 +1,67 @@
+﻿Table Properties
+-------------------
+ProductId (Identity), Name (varchar 50), Quantity (int), Color(varchar 50), Price(Decimel(18,2)), ProductCode(int)
+---------------------
+For Insert case
+---------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_Product`(
+ IN Name varchar(50),
+ IN Quantity int(11),
+ IN Color varchar(50),
+ IN Price decimal(18,2),
+ IN ProductCode varchar(50)
+ )
+BEGIN
+insert into product (Name,Quantity,Color,Price,ProductCode)
+values (Name,Quantity,Color,Price,ProductCode);
+END
+----------------------
+For Update Case 
+---------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Update_Product`(
+p_productId int ,
+n_name varchar(50),
+q_quantity int(11),
+c_color varchar(50),
+p_price decimal(18,2),
+p_productCode int(11)
+)
+BEGIN
+update product 
+set Name=n_name ,
+Quantity=q_quantity,
+Color=c_color,
+Price=p_price,
+ProductCode=p_productCode
+where ProductId=p_productId ;
+END
+-----------------------------------
+For Delete Case
+-----------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Delete_Product`(
+p_ProductId int
+)
+BEGIN
+delete from product 
+where ProductId = p_ProductId ;
+END
+--------------------------------
+For Get Product 
+--------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Get_Productby_ProductId`(
+p_ProductId int
+)
+BEGIN
+select * from product 
+where ProductId = p_ProductId ;
+END
+-----------------------------------------
+For Get All Products 
+----------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_GetAll_Products`(
+ 
+ )
+BEGIN
+select * from product ;
+END
+-------------------------------------
